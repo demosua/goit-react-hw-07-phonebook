@@ -1,40 +1,36 @@
+import { useSelector } from 'react-redux';
 import ContactItem from "../ContactItem";
-import { Contact } from './Contacts.styled'
-import { useSelector } from 'react-redux'
-import { selectFilter } from 'redux/selectors'
-// import PropTypes from 'prop-types';
-// import { useGetContactsQuery } from '../../redux/contactsSlice'
+import { selectContacts, selectFilter } from 'redux/selectors';
+import { Contact } from './Contacts.styled';
+import PropTypes from 'prop-types';
+
+const getVisibleContacts = (contacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+};
 
 const Contacts = () => {
-  const filter = useSelector(selectFilter)
-  const normalizedFilter = filter.toLowerCase();
-  // const { data: contacts, error, isLoading } = useGetContactsQuery();
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+  const visibleContacts = getVisibleContacts(contacts, filter);
   
-  // if (!contacts) { return }
-  // const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
-
   return (
-
     <Contact>
-      {/* {isLoading
-        ? (<div>Loading...</div>)
-        : visibleContacts.map(contact =>
+      { visibleContacts.map(contact =>
         (<ContactItem key={contact.id} contact={contact} />)
       )}
-      {error && <div>Error</div>} */}
     </Contact>
-
   )
 };
   
 export default Contacts;
 
-// Contacts.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.exact({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     }).isRequired,
-//   ),
-// };
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired,
+  ),
+};

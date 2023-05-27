@@ -1,13 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import { filterChange } from '../../redux/filterSlice'
-import { selectFilter } from '../../redux/selectors'
+import { useSelector, useDispatch } from 'react-redux';
+import { filterChange } from '../../redux/filterSlice';
+import { selectFilter } from '../../redux/selectors';
 import PropTypes from 'prop-types';
-import { Lbl, Inp } from './Filter.styled'
+import { Lbl, Inp } from './Filter.styled';
 
 const Filter = () => {
-  const filterValue = useSelector(selectFilter)
-  const dispatch = useDispatch()
+  const filterValue = useSelector(selectFilter);
+  const dispatch = useDispatch();
 
   return (
     <>
