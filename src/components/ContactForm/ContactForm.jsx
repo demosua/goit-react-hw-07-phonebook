@@ -4,8 +4,8 @@ import { Form, Label, Input, Button } from './ContactForm.styled';
 import { IoPersonAddOutline } from 'react-icons/io5';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
-import { ToastMessage } from 'constants/toastMessage'
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
 
@@ -62,7 +62,18 @@ const ContactForm = () => {
             required
           />
              <Button type="submit"><IoPersonAddOutline /></Button>
-                <ToastMessage />         
+                <ToastContainer
+                  position="top-center"
+                  autoClose={1000}
+                  hideProgressBar={true}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+              />
       </Form>
     </>
   )
