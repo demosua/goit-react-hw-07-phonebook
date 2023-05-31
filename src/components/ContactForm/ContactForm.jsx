@@ -2,10 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { IoPersonAddOutline } from 'react-icons/io5';
-import { ToastMessage } from '../../constants/toastMessage';
-import 'react-toastify/dist/ReactToastify.css';
-import { addContact } from '../../redux/operations';
+import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
+import { ToastMessage } from 'constants/toastMessage'
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
@@ -63,7 +62,7 @@ const ContactForm = () => {
             required
           />
              <Button type="submit"><IoPersonAddOutline /></Button>
-              <ToastMessage />         
+                <ToastMessage />         
       </Form>
     </>
   )
